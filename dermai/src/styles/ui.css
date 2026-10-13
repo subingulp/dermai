@@ -1,0 +1,552 @@
+/* Reusable UI pieces: buttons, badges, cards, navigation, calendar, modal... */
+
+/* ---------- Buttons ---------- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  height: 56px; /* 56px touch target from the kit */
+  padding: 0 24px;
+  border-radius: var(--r-pill);
+  font-family: var(--font-head);
+  font-weight: 800;
+  font-size: 16px;
+  white-space: nowrap;
+  transition: background-color 0.2s, box-shadow 0.2s;
+}
+.btn--block {
+  width: 100%;
+}
+.btn--primary {
+  background: var(--navy);
+  color: var(--white);
+}
+.btn--primary:hover:not(:disabled) {
+  box-shadow: 0 8px 20px rgba(23, 43, 83, 0.22);
+}
+.btn--secondary {
+  background: var(--pale);
+  color: var(--navy);
+}
+.btn--secondary:hover:not(:disabled) {
+  background: #dbe8f6;
+}
+.btn--text {
+  height: auto;
+  padding: 6px 4px;
+  background: none;
+  color: var(--navy);
+  font-size: 14px;
+}
+.btn--sm {
+  height: 40px;
+  padding: 0 16px;
+  font-size: 14px;
+}
+
+.icon-btn {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: var(--white);
+  border: 1px solid var(--line);
+  display: grid;
+  place-items: center;
+  color: var(--navy);
+  flex: none;
+}
+
+/* ---------- Badge, notice ---------- */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 7px 12px;
+  border-radius: var(--r-pill);
+  font-weight: 600;
+  font-size: 11px;
+  line-height: 1;
+  color: var(--navy);
+  white-space: nowrap;
+}
+.badge--sun {
+  background: var(--sun-pale);
+}
+.badge--pale {
+  background: var(--pale);
+}
+
+.notice {
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+  padding: 14px 16px;
+  border-radius: 16px;
+  background: var(--sun-pale);
+  font-size: 12px;
+  line-height: 1.5;
+  color: var(--navy);
+}
+.notice svg {
+  flex: none;
+  margin-top: 1px;
+}
+.notice--error {
+  background: #fde8e2;
+  color: #7a2a1a;
+}
+
+/* ---------- Cards ---------- */
+.card {
+  background: var(--white);
+  border-radius: var(--r-card);
+  box-shadow: var(--shadow-card);
+}
+
+.section {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+/* Metric cards (Redness / Trouble / Dryness / Oiliness) */
+.metrics-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+.metric {
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  min-width: 0;
+}
+.metric__head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-weight: 500;
+  font-size: 12px;
+  color: var(--muted);
+}
+.metric__value {
+  font-family: var(--font-head);
+  font-weight: 800;
+  font-size: 30px;
+  line-height: 1.1;
+  font-variant-numeric: tabular-nums;
+}
+.metric__track {
+  height: 4px;
+  border-radius: var(--r-pill);
+  background: var(--pale);
+  overflow: hidden;
+}
+.metric__fill {
+  height: 100%;
+  border-radius: var(--r-pill);
+  background: var(--mist);
+}
+
+/* Navy AI Risk Assessment card */
+.risk-card {
+  width: 100%;
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  padding: 22px;
+  border-radius: var(--r-card);
+  background: var(--navy);
+  color: var(--white);
+}
+.risk-card__title {
+  font-family: var(--font-head);
+  font-weight: 800;
+  font-size: 18px;
+}
+.risk-card__text {
+  font-size: 15px;
+  line-height: 1.5;
+}
+.risk-card__link {
+  font-family: var(--font-head);
+  font-weight: 800;
+  font-size: 14px;
+  color: var(--sun);
+}
+
+/* Photo record card ("Your latest photo") */
+.photo-card {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 14px;
+  text-align: left;
+}
+.photo-card__img {
+  width: 86px;
+  height: 90px;
+  border-radius: 12px;
+  object-fit: cover;
+  flex: none;
+  background: var(--pale);
+}
+.photo-card__body {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  min-width: 0;
+}
+.photo-card__title {
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 1.4;
+}
+.photo-card__link {
+  font-family: var(--font-head);
+  font-weight: 800;
+  font-size: 13px;
+}
+
+/* ---------- Bottom navigation ---------- */
+.nav {
+  flex: none;
+  display: flex;
+  gap: 12px;
+  padding: 10px 20px calc(10px + env(safe-area-inset-bottom));
+  background: var(--white);
+  border-top: 1px solid var(--line);
+}
+.nav__tab {
+  position: relative;
+  flex: 1;
+  height: 60px;
+  border-radius: 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  font-family: var(--font-head);
+  font-weight: 600;
+  font-size: 12px;
+  color: var(--muted);
+}
+.nav__tab[aria-current='page'] {
+  font-weight: 800;
+  color: var(--navy);
+}
+.nav__pill {
+  position: absolute;
+  inset: 0;
+  border-radius: 24px;
+  background: var(--pale);
+}
+.nav__content {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+}
+
+/* ---------- Calendar ---------- */
+.calendar {
+  background: var(--white);
+  border-radius: var(--r-card);
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.calendar__row {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 4px;
+}
+.calendar__col {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+.calendar__dow {
+  font-weight: 500;
+  font-size: 9px;
+  color: var(--muted);
+}
+.calendar__day {
+  position: relative;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  font-family: var(--font-head);
+  font-weight: 800;
+  font-size: 15px;
+  color: var(--navy);
+}
+.calendar__day--future {
+  font-weight: 600;
+  font-size: 14px;
+  color: var(--muted);
+  cursor: default;
+}
+.calendar__day--small {
+  height: 26px;
+}
+.calendar__day--selected {
+  color: var(--white);
+}
+.calendar__sel {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: var(--navy);
+}
+.calendar__num {
+  position: relative;
+}
+.calendar__dot {
+  position: absolute;
+  bottom: 5px;
+  left: 50%;
+  width: 4px;
+  height: 4px;
+  margin-left: -2px;
+  border-radius: 50%;
+  background: var(--mist);
+}
+.calendar__day--selected .calendar__dot {
+  background: var(--sun);
+}
+.calendar__month {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-weight: 600;
+  font-size: 15px;
+}
+.calendar__arrows {
+  display: flex;
+  gap: 2px;
+}
+.calendar__arrow {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  color: var(--muted);
+}
+.calendar__arrow:hover:not(:disabled) {
+  background: var(--pale);
+}
+
+/* ---------- Tutorial dots ---------- */
+.dots {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}
+.dot {
+  height: 7px;
+  width: 7px;
+  border-radius: var(--r-pill);
+  background: var(--mist);
+  padding: 0;
+  transition: width 0.25s, background-color 0.25s;
+}
+.dot--active {
+  width: 24px;
+  background: var(--navy);
+}
+
+/* ---------- Modal ---------- */
+.modal {
+  position: absolute;
+  inset: 0;
+  z-index: 30;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  padding: 16px;
+  background: rgba(23, 43, 83, 0.38);
+  backdrop-filter: blur(2px);
+}
+.modal__sheet {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 22px;
+  background: var(--white);
+  border-radius: var(--r-card);
+  box-shadow: 0 24px 60px rgba(23, 43, 83, 0.25);
+}
+.modal__icon {
+  width: 44px;
+  height: 44px;
+  border-radius: 16px;
+  background: var(--sun-pale);
+  display: grid;
+  place-items: center;
+}
+.modal__title {
+  font-family: var(--font-head);
+  font-weight: 800;
+  font-size: 23px;
+  line-height: 1.2;
+}
+.modal__text {
+  font-size: 13px;
+  line-height: 1.5;
+  color: var(--muted);
+}
+.modal__actions {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+/* ---------- Segmented control (date range) ---------- */
+.segmented {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  padding: 4px;
+  gap: 4px;
+  border-radius: var(--r-pill);
+  background: var(--pale);
+}
+.segmented__btn {
+  position: relative;
+  height: 40px;
+  border-radius: var(--r-pill);
+  font-family: var(--font-head);
+  font-weight: 800;
+  font-size: 14px;
+  color: var(--muted);
+}
+.segmented__btn[aria-pressed='true'] {
+  color: var(--white);
+}
+.segmented__pill {
+  position: absolute;
+  inset: 0;
+  border-radius: var(--r-pill);
+  background: var(--navy);
+}
+.segmented__label {
+  position: relative;
+}
+
+/* ---------- Forms & toggles ---------- */
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.field__label {
+  font-weight: 600;
+  font-size: 12px;
+  color: var(--muted);
+}
+.field__input {
+  height: 48px;
+  padding: 0 16px;
+  border-radius: 16px;
+  border: 1px solid var(--line);
+  background: var(--icy);
+  font-size: 15px;
+  width: 100%;
+}
+.field__input:focus {
+  outline: 3px solid var(--sun);
+  border-color: transparent;
+}
+.field__error {
+  font-size: 12px;
+  color: var(--danger);
+}
+
+.toggle {
+  position: relative;
+  width: 48px;
+  height: 28px;
+  border-radius: var(--r-pill);
+  background: var(--mist);
+  flex: none;
+  transition: background-color 0.2s;
+}
+.toggle[aria-checked='true'] {
+  background: var(--navy);
+}
+.toggle__knob {
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: var(--white);
+  box-shadow: 0 2px 6px rgba(23, 43, 83, 0.25);
+}
+.toggle[aria-checked='true'] .toggle__knob {
+  left: 23px;
+}
+
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.chip {
+  height: 40px;
+  padding: 0 16px;
+  border-radius: var(--r-pill);
+  background: var(--pale);
+  font-family: var(--font-head);
+  font-weight: 800;
+  font-size: 14px;
+}
+.chip[aria-pressed='true'] {
+  background: var(--navy);
+  color: var(--white);
+}
+
+/* ---------- Empty state ---------- */
+.empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  padding: 24px 20px;
+  text-align: center;
+  background: var(--white);
+  border-radius: var(--r-card);
+}
+.empty__icon {
+  width: 44px;
+  height: 44px;
+  border-radius: 16px;
+  background: var(--sun-pale);
+  display: grid;
+  place-items: center;
+}
+.empty__title {
+  font-family: var(--font-head);
+  font-weight: 800;
+  font-size: 17px;
+}
+
+/* ---------- Screen header (back + title) ---------- */
+.screen-header {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}

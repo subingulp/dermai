@@ -1,0 +1,41 @@
+/* Design tokens taken from the Figma "DermAI interface kit". */
+:root {
+  /* colour */
+  --navy: #172b53;
+  --icy: #f4f8fc;
+  --yellow: #f8de88;
+  --cream: #fff5d6;
+  --pale: #e7f0fa;
+  --track: #bed4ec;
+  --line: #dce6f1;
+  --muted: #66768c;
+  --white: #ffffff;
+  --skin: #f7d6c6;
+  --blush: #f2b8a8;
+
+  /* radius */
+  --r-sm: 12px;
+  --r-md: 16px;
+  --r-card: 24px;
+  --r-lg: 32px;
+  --r-pill: 999px;
+
+  /* spacing (4 · 8 · 12 · 16 · 24 · 32) */
+  --s1: 4px;
+  --s2: 8px;
+  --s3: 12px;
+  --s4: 16px;
+  --s5: 24px;
+  --s6: 32px;
+
+  /* elevation */
+  --shadow-soft: 0 6px 20px rgba(23, 43, 83, 0.04);
+  --shadow-float: 0 12px 28px rgba(23, 43, 83, 0.07);
+
+  /* type */
+  --font-head: 'Nunito Sans', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --font-body: 'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
+
+  --nav-h: 82px;
+  --action-h: 56px;
+}
